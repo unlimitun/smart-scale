@@ -1,0 +1,26 @@
+{
+  "name": "smart-scale",
+  "version": "1.0.0",
+  "description": "you can scale your picture You can intelligently resize your images and prevent distortion of certain parts of the image.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npx tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unlimitun/smart-scale.git"
+  },
+  "keywords": [
+    "scale-picture"
+  ],
+  "author": "zhangguoquan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unlimitun/smart-scale/issues"
+  },
+  "homepage": "https://github.com/unlimitun/smart-scale#readme",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
