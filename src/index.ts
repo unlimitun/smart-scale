@@ -23,11 +23,13 @@ export class SmartScale {
   img: HTMLImageElement;
   bgHeight: number = 0;
   bgWidth: number = 0;
+  ratio: number = 1;
   constructor(
     bgPath: string,
     xInterval: [number, number][],
     yInterval: [number, number][],
-    canvas: HTMLCanvasElement
+    canvas: HTMLCanvasElement,
+    ratio?: number
   ) {
     this.bgPath = bgPath;
     this.xInterval = xInterval;
@@ -35,6 +37,7 @@ export class SmartScale {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d")!;
     this.img = new Image();
+    this.ratio = ratio || 1
     this.init()
   }
 
@@ -49,8 +52,8 @@ export class SmartScale {
   }
 
   setCanvasSize() {
-    this.canvas.height = this.canvas.clientHeight;
-    this.canvas.width = this.canvas.clientWidth;
+    this.canvas.height = this.canvas.clientHeight / this.ratio;
+    this.canvas.width = this.canvas.clientWidth / this.ratio;
   }
 
   calcRange(interval: Interval, size: number, newSize: number) {
@@ -139,12 +142,12 @@ export class SmartScale {
     const xArr = this.calcRange(
       this.xInterval,
       this.bgWidth,
-      this.canvas.clientWidth
+      this.canvas.clientWidth / this.ratio
     );
     const yArr = this.calcRange(
       this.yInterval,
       this.bgHeight,
-      this.canvas.clientHeight
+      this.canvas.clientHeight / this.ratio
     );
     const result: ScaleData[] = [];
     yArr.forEach((yItem) => {
@@ -198,5 +201,10 @@ export class SmartScale {
   resizeHandle() {
     this.setCanvasSize();
     this.draw(this.calcRatioData());
+  }
+
+  setRatio(ratio: number) {
+    this.ratio = ratio
+    this.resizeHandle()
   }
 }

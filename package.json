@@ -1,7 +1,7 @@
 {
   "name": "smart-scale",
-  "version": "1.0.1",
-  "description": "you can scale your picture You can intelligently resize your images and prevent distortion of certain parts of the image.",
+  "version": "1.0.2",
+  "description": "You can intelligently resize your images and prevent distortion of certain parts of the image.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
